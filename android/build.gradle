@@ -1,0 +1,34 @@
+buildscript {
+    ext {
+        // Google Play requires apps to keep target API within a year of the
+        // latest Android release. Targeting API 36 (Android 16) satisfies the
+        // 31-Aug-2026 requirement. build-tools bumped to 36 to match compileSdk.
+        buildToolsVersion = "36.0.0"
+        // React Native 0.77 requires minSdk 24 (Android 7.0).
+        minSdkVersion = 24
+        compileSdkVersion = 36
+        targetSdkVersion = 36
+        // NDK 27 links with 16 KB-aligned segments by default, which is what
+        // Play requires from Nov 2025. Anything built from source here (e.g.
+        // react-native-screens) needs it; RN's own prebuilts come aligned from
+        // 0.77 onwards.
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.0.21"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Pinned explicitly: React Native 0.75.4's gradle plugin resolves AGP
+        // 8.5.0, which cannot compile against SDK 36. 8.10.1 can, and needs
+        // Gradle 8.11.1 (see gradle-wrapper.properties).
+        classpath("com.android.tools.build:gradle:8.10.1")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        // Reads google-services.json into the FCM SDK at build time.
+        classpath("com.google.gms:google-services:4.4.2")
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"

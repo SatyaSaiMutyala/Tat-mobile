@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Teal behind the adaptive launcher icon, sampled from the artwork so the
+         foreground's own background blends into it seamlessly. -->
+    <color name="ic_launcher_background">#0C7A6C</color>
+
+    <!-- Native splash: the deep green the JS splash and sign-in screens use
+         (theme.colors.authBg), so there is no colour jump when RN takes over. -->
+    <color name="splash_background">#265C50</color>
+</resources>

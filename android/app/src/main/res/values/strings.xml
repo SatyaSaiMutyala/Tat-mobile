@@ -1,0 +1,5 @@
+<resources>
+    <!-- Launcher label only. The React Native component name stays "TAT" —
+         AppRegistry and MainActivity.getMainComponentName() must agree on it. -->
+    <string name="app_name">TRUST TAT</string>
+</resources>
